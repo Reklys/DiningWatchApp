@@ -1,0 +1,31 @@
+{
+    "author": "trpotter72@gmail.com",
+    "dependencies": {},
+    "keywords": [],
+    "name": "woah",
+    "pebble": {
+        "displayName": "Woah",
+        "enableMultiJS": true,
+        "messageKeys": {
+            "menudata": 2,
+            "menusize": 3,
+            "requestmenu": 1,
+            "status": 0
+        },
+        "projectType": "native",
+        "resources": {
+            "media": []
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt",
+            "chalk"
+        ],
+        "uuid": "764fbb73-1028-4876-8b6b-e40aa08d50b0",
+        "watchapp": {
+            "watchface": false
+        }
+    },
+    "version": "1.0.0"
+}
