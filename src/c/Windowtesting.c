@@ -82,8 +82,9 @@ static void location_back_handler(ClickRecognizerRef recognizer, void *context) 
   window_stack_pop(true);
 }
 
-static void countdown_click_config_provider(void *context) {
+static void location_click_config_provider(void *context) {
   window_single_click_subscribe(BUTTON_ID_BACK, location_back_handler);
+
 
 }
 
@@ -91,12 +92,18 @@ static void location_window_load(Window *window){
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
   
-  window_set_click_config_provider(window, countdown_click_config_provider);
+  window_set_click_config_provider(window, location_click_config_provider);
+  
+  menu_text_layer = text_layer_create(GRect(0,32, bounds.size.w, 20));
+  text_layer_set_text(menu_text_layer, "location");
+  text_layer_set_text_alignment(menu_text_layer, GTextAlignmentLeft);
+  layer_add_child(window_layer, text_layer_get_layer(menu_text_layer));
   
   location_text_layer = text_layer_create(GRect(0, 32, bounds.size.w, 20));
   text_layer_set_text(location_text_layer, "location");
   text_layer_set_text_alignment(location_text_layer, GTextAlignmentLeft);
   layer_add_child(window_layer, text_layer_get_layer(location_text_layer));
+
 }
 
 static void location_window_unload(Window *window) {
@@ -115,6 +122,8 @@ location_window = window_create();
     .load = location_window_load,
     .unload = location_window_unload,
   });
+ // window_stack_push(location_window, false);
+  window_stack_push(menu_window, false);
 }
 static void deinit(void) {
   window_destroy(menu_window);
